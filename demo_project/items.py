@@ -12,9 +12,13 @@ def remove(value):
 def remove_n(value):
     return value.replace("\n ","")
 
+
+def strip_str(value):
+    return value.strip()
+
 class QuoteItem(scrapy.Item):
     text = scrapy.Field(
-        input_processor=MapCompose(str.strip,remove),
+        input_processor=MapCompose(strip_str,remove),
         output_processor=TakeFirst()
     )
     author = scrapy.Field(
